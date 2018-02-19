@@ -1,0 +1,21 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">Simple Table</h4>
+            <p class="category">Here is a subtitle for this table</p>
+          </div>
+          <div class="card-content table-responsive">
+            <div *ngFor="let list of assignmentList" >
+              <mat-card class="col-md-3 btn-info" [routerLink]="[list.path]"  matTooltip="{{list.description}}">
+                <h4>{{list.name}}</h4>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

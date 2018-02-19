@@ -1,0 +1,217 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">Employee
+              <button *ngIf="showTable" class="btn btn-warning pull-right" (click)="addPage()">Add</button>
+              <button *ngIf="showAdd" class="btn btn-warning pull-right" (click)="backPage()">Back</button>
+            </h4>
+            <p class="category">Here is a subtitle for this table</p>
+          </div>
+          <div class="card-content table-responsive">
+            <table *ngIf="showTable" datatable [dtOptions]="dtOptions" class="row-border hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>First name</th>
+                  <th>Last name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Foo</td>
+                  <td>Bar</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Someone</td>
+                  <td>Youknow</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Iamout</td>
+                  <td>Ofinspiration</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Yoda</td>
+                  <td>Skywalker</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Patrick</td>
+                  <td>Dupont</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Barack</td>
+                  <td>Obama</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>François</td>
+                  <td>Holland</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Michel</td>
+                  <td>Popo</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Chuck</td>
+                  <td>Norris</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>Simon</td>
+                  <td>Robin</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>Louis</td>
+                  <td>Lin</td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>Zelda</td>
+                  <td>Link</td>
+                </tr>
+              </tbody>
+            </table>
+            <!--end table-->
+            <div *ngIf="showAdd">
+              <form>
+                <mat-accordion>
+                  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Agent
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        Type your name and age
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <div class="row">
+                      <div class="form-group form-black label-floating is-empty">
+                        <mat-form-field class="col-md-6">
+                          <input matInput placeholder="First name">
+                        </mat-form-field>
+                        <mat-form-field class="col-md-6">
+                          <input matInput placeholder="Last name">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="form-group form-black label-floating is-empty">
+                        <mat-form-field class="col-md-6">
+                          <input matInput placeholder="Login">
+                        </mat-form-field>
+                        <mat-form-field class="col-md-6">
+                          <input matInput placeholder="Password">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="form-group form-black label-floating is-empty">
+                        <mat-form-field class="col-md-4">
+                          <mat-select class="control-label" placeholder="Level">
+                            <mat-option value="food.value">
+                              aaa
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-4">
+                          <mat-select class="control-label" placeholder="Main Group">
+                            <mat-option value="food.value">
+                              aaa
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-4">
+                          <mat-select class="control-label" placeholder="Role Group">
+                            <mat-option value="food.value">
+                              aaa
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="form-group form-black label-floating is-empty">
+                        <mat-form-field class="col-md-6">
+                          <input matInput placeholder="Email">
+                        </mat-form-field>
+                        <mat-form-field class="col-md-6">
+                          <input matInput placeholder="Phone">
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="form-group form-black label-floating is-empty">
+                        <div class="col-md-6">
+                          <div class="button-row">
+                            <label>Image
+                            <button mat-button color="accent" mat-mini-fab (click)="imgFileInput.click()">
+                              <mat-icon>attachment</mat-icon>
+                            </button>
+                            <input hidden type="file" #imgFileInput (change)="previewImage($event)" accept="image/*"/>
+                            {{showName}}
+                          </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                          <div class="form-group form-black label-floating is-empty">
+                              <mat-form-field class="col-md-12">
+                                  <textarea matInput rows="4" placeholder="Agent Info"></textarea>
+                              </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-action-row>
+                      <button class="btn btn-danger pull-right" (click)="nextStep()">Next</button>
+                    </mat-action-row>
+
+                  </mat-expansion-panel>
+
+                  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        AGENT SKILL
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        Type the country name
+                        <mat-icon>map</mat-icon>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-form-field>
+                      <input matInput placeholder="Country">
+                    </mat-form-field>
+
+                    <mat-action-row>
+                      <button class="btn btn-defult pull-left" (click)="prevStep()">Previous</button>
+                      <button type="submit" class="btn btn-danger pull-right">Save</button>
+                    </mat-action-row>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
